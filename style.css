@@ -47,11 +47,35 @@ footer figcaption {
     text-align: center;
 }
 
+#gallery {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 24px;
+    flex-wrap: wrap;
+}
+
+#gallery > img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border: 2px solid var(--img-border-color);
+    border-radius: 16px;
+}
+
+#gallery > img:hover {
+    border-color: var(--img-border-color-hover);
+}
+
 .div-wrapper {
     max-width: 1440px;
     padding: 16px max(calc(50% - 720px), 64px);
 }
 
 .page-content {
+    padding-top: 120px;
+    padding-bottom: 120px;
+    display: flex;
+    flex-direction: column;
     gap: 80px;
 }
