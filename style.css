@@ -1,14 +1,9 @@
 body {
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
     min-height: 100dvh;
     background-color: var(--main-bg);
-}
-
-header {
-    height: 80px;
-    background-color: var(--secondary-bg);
+    margin: 0;
 }
 
 main {
@@ -22,29 +17,49 @@ h1 {
     font-size: 56px;
     font-weight: 600;
     text-align: center;
+    margin: 0;
 }
 
-footer {
-    height: 128px;
+h2 {
+    font-size: 24px;
+    font-weight: 600;
+    margin: 0;
+}
+
+dialog {
     background-color: var(--secondary-bg);
-    border-top-left-radius: 50% 20%;
-    border-top-right-radius: 50% 20%;
+    border: none;
+    border-radius: 40px;
+    padding: 56px 64px 56px 64px;
+}
+
+dialog img {
+    width: 560px;
+    height: 375px;
+    object-fit: cover;
+}
+
+dialog header {
     display: flex;
-    flex-direction: column;
+    justify-content: space-between;
     align-items: center;
+}
+
+dialog header input {
+    width: 32px;
+    height: 32px;
+}
+
+dialog footer {
+    display: flex;
+    flex-direction: row;
     justify-content: center;
+    gap: 56px;
 }
 
-footer > figure {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 16px;
-}
-
-footer figcaption {
-    color: var(--secondary-font-color);
-    text-align: center;
+dialog footer input {
+    width: 60px;
+    height: 60px;
 }
 
 #gallery {
@@ -65,6 +80,35 @@ footer figcaption {
 
 #gallery > img:hover {
     border-color: var(--img-border-color-hover);
+    cursor: pointer;
+}
+
+.main-header {
+    height: 80px;
+    background-color: var(--secondary-bg);
+}
+
+.main-footer {
+    height: 128px;
+    background-color: var(--secondary-bg);
+    border-top-left-radius: 50% 20%;
+    border-top-right-radius: 50% 20%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.main-footer > figure {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+}
+
+.main-footer figcaption {
+    color: var(--secondary-font-color);
+    text-align: center;
 }
 
 .div-wrapper {
@@ -78,4 +122,14 @@ footer figcaption {
     display: flex;
     flex-direction: column;
     gap: 80px;
+}
+
+.dialog-content {
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+}
+
+.d-none {
+    display: none;
 }

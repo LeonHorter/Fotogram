@@ -9,10 +9,10 @@
     <link rel="stylesheet" href="./styles/standard.css">
     <link rel="stylesheet" href="./styles/font.css">
     <link rel="stylesheet" href="style.css">
-    <script src="./assets/scripts/script.js"></script>
+    <script src="./assets/scripts/script.js" defer></script>
 </head>
-<body onload="render()">
-    <header>
+<body onload="renderGallery()">
+    <header class="main-header">
         <div class="div-wrapper">
             <img src="./assets/icons/logo.svg" alt="Fotogram-Logo">
         </div>
@@ -25,7 +25,22 @@
         </div>
     </main>
 
-    <footer>
+    <dialog id="photo-overlay">
+        <div class="dialog-content">
+            <header>
+                <h2 id="photo-title"></h2>
+                <input type="image" src="./assets/icons/close.svg" onclick="closeDialog()">
+            </header>
+            <section id="photo"></section>
+            <footer>
+                <input type="image" src="./assets/icons/arrow-left.svg" onclick="showPrevImage()">
+                <p id="photo-number"></p>
+                <input type="image" src="./assets/icons/arrow-right.svg" onclick="showNextImage()">
+            </footer>
+        </div>
+    </dialog>
+
+    <footer class="main-footer">
         <figure class="div-wrapper">
             <img src="./assets/icons/da-logo.svg" alt="Developer Akademie Logo">
             <figcaption>© 2023 Developer Akademie GmbH</figcaption>
