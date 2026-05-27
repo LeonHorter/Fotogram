@@ -14,7 +14,7 @@
 <body onload="renderGallery()">
     <header class="main-header">
         <div class="div-wrapper">
-            <img src="./assets/icons/logo.svg" alt="Fotogram-Logo">
+            <img src="./assets/icons/logo.svg" alt="Fotogram-Logo" class="logo">
         </div>
     </header>
 
@@ -25,25 +25,25 @@
         </div>
     </main>
 
-    <dialog id="photo-overlay">
-        <div class="dialog-content">
+    <dialog id="photo-overlay" aria-labelledby="photo-title" onclick="closeDialog()">
+        <div class="dialog-content" onclick="stopPropagation(event)">
             <header>
                 <h2 id="photo-title"></h2>
-                <input type="image" src="./assets/icons/close.svg" onclick="closeDialog()">
+                <input type="image" aria-label="Dialog schließen" class="close-btn" src="./assets/icons/close.svg" tabindex="0" onclick="closeDialog()">
             </header>
-            <section id="photo"></section>
+            <section id="photo-container"></section>
             <footer>
-                <input type="image" src="./assets/icons/arrow-left.svg" onclick="showPrevImage()">
+                <input type="image" aria-label="vorheriges Foto" class="arrow-btn arrow-left" src="./assets/icons/arrow.svg" tabindex="0" onclick="showPrevImage()">
                 <p id="photo-number"></p>
-                <input type="image" src="./assets/icons/arrow-right.svg" onclick="showNextImage()">
+                <input type="image" aria-label="nächstes Foto" class="arrow-btn" src="./assets/icons/arrow.svg" tabindex="0" onclick="showNextImage()">
             </footer>
         </div>
     </dialog>
 
     <footer class="main-footer">
-        <figure class="div-wrapper">
-            <img src="./assets/icons/da-logo.svg" alt="Developer Akademie Logo">
-            <figcaption>© 2023 Developer Akademie GmbH</figcaption>
+        <figure class="div-wrapper footer-content">
+            <img src="./assets/icons/da-logo.svg" alt="Developer Akademie Logo" class="footer-logo">
+            <figcaption class="copyright-text">© 2023 Developer Akademie GmbH</figcaption>
         </figure>
     </footer>
 </body>

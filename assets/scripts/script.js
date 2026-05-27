@@ -1,7 +1,7 @@
 let imgNames = [
     'alaska-810433_1280.jpg',
     'anime-8788959_1280.jpg',
-    'atmosphere-8752835_1280.png',
+    'atmosphere-8752835_1280.jpg',
     'blue-tit-8521052_1280.jpg',
     'hurricane-92968_1280.jpg',
     'lake-2896379_1280.jpg',
@@ -29,7 +29,7 @@ let imgAlt = [
 ]
 
 const dialogRef = document.getElementById('photo-overlay');
-let photoId = '';
+let currentPhotoId;
 
 function renderGallery() {
     let contentRef = document.getElementById('gallery');
@@ -42,11 +42,11 @@ function renderGallery() {
 }
 
 function getGalleryTemplate(i) {
-    return `<img src="./assets/img/${imgNames[i]}" alt="${imgAlt[i]}" id="${i}" onclick="openDialog(this)">`;
+    return `<input type="image" aria-haspopup="dialog" aria-controls="photo-overlay" src="./assets/img/${imgNames[i]}" alt="${imgAlt[i]}" id="${i}" tabindex="0" onclick="openDialog(this)">`;
 }
 
 function renderDialog() {
-    let contentRef = document.getElementById('photo');
+    let contentRef = document.getElementById('photo-container');
 
     contentRef.innerHTML = '';
 
@@ -56,7 +56,7 @@ function renderDialog() {
 }
 
 function setPhotoId(element) {
-    photoId = parseInt(element.id);
+    currentPhotoId = parseInt(element.id);
 }
 
 function getPhotoTemplate(i) {
@@ -64,7 +64,7 @@ function getPhotoTemplate(i) {
 }
 
 function toggleDNone() {
-    let bigPhotoId = 'photo-' + photoId;
+    let bigPhotoId = 'photo-' + currentPhotoId;
     let photoRef = document.getElementById(bigPhotoId);
 
     photoRef.classList.toggle('d-none');
@@ -73,12 +73,12 @@ function toggleDNone() {
 function initDialogTitle() {
     let contentRef = document.getElementById('photo-title');
 
-    contentRef.innerText = imgNames[photoId];
+    contentRef.innerText = imgNames[currentPhotoId];
 }
 
 function initDialogPhotoNumber() {
     let contentRef = document.getElementById('photo-number');
-    let photoNumber = parseInt(photoId) + 1;
+    let photoNumber = parseInt(currentPhotoId) + 1;
     let numberOfPhotos = imgNames.length;
 
     contentRef.innerHTML = '';
@@ -87,20 +87,20 @@ function initDialogPhotoNumber() {
 
 function showNextImage() {
     toggleDNone();
-    if (photoId + 1 >= imgNames.length) {
-        photoId = 0;
+    if (currentPhotoId + 1 >= imgNames.length) {
+        currentPhotoId = 0;
     } else {
-        photoId++;
+        currentPhotoId++;
     }
     initDialog();
 }
 
 function showPrevImage() {
     toggleDNone();
-    if (photoId - 1 < 0) {
-        photoId = imgNames.length - 1;
+    if (currentPhotoId - 1 < 0) {
+        currentPhotoId = imgNames.length - 1;
     } else {
-        photoId--;
+        currentPhotoId--;
     }
     initDialog();
 }
@@ -120,4 +120,8 @@ function openDialog(element) {
 
 function closeDialog() {
     dialogRef.close();
+}
+
+function stopPropagation(event) {
+    event.stopPropagation();
 }

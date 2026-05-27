@@ -15,7 +15,7 @@ main {
 
 h1 {
     font-size: 56px;
-    font-weight: 600;
+    font-weight: 700;
     text-align: center;
     margin: 0;
 }
@@ -30,36 +30,25 @@ dialog {
     background-color: var(--secondary-bg);
     border: none;
     border-radius: 40px;
-    padding: 56px 64px 56px 64px;
+    padding: 0;
 }
 
-dialog img {
-    width: 560px;
-    height: 375px;
-    object-fit: cover;
+dialog::backdrop {
+    background-color: rgba(0, 0, 0, 0.4);
 }
 
-dialog header {
+#photo-overlay header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 24px;
 }
 
-dialog header input {
-    width: 32px;
-    height: 32px;
-}
-
-dialog footer {
+#photo-overlay footer {
     display: flex;
     flex-direction: row;
     justify-content: center;
     gap: 56px;
-}
-
-dialog footer input {
-    width: 60px;
-    height: 60px;
 }
 
 #gallery {
@@ -70,7 +59,7 @@ dialog footer input {
     flex-wrap: wrap;
 }
 
-#gallery > img {
+#gallery>input {
     width: 150px;
     height: 150px;
     object-fit: cover;
@@ -78,14 +67,34 @@ dialog footer input {
     border-radius: 16px;
 }
 
-#gallery > img:hover {
+#gallery>input:hover {
     border-color: var(--img-border-color-hover);
     cursor: pointer;
+}
+
+#photo-container {
+    max-width: 700px;
+    height: 500px;
+    display: flex;
+    justify-content: center;
+}
+
+#photo-container>img {
+    max-width: 100%;
+    object-fit: cover;
+}
+
+#photo-number {
+    font-size: 16px;
 }
 
 .main-header {
     height: 80px;
     background-color: var(--secondary-bg);
+}
+
+.logo {
+    height: 40px;
 }
 
 .main-footer {
@@ -99,14 +108,15 @@ dialog footer input {
     justify-content: center;
 }
 
-.main-footer > figure {
+.footer-content {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 16px;
 }
 
-.main-footer figcaption {
+.copyright-text {
+    font-size: 14px;
     color: var(--secondary-font-color);
     text-align: center;
 }
@@ -125,6 +135,8 @@ dialog footer input {
 }
 
 .dialog-content {
+    padding: 56px 64px 56px 64px;
+    border-radius: 40px;
     display: flex;
     flex-direction: column;
     gap: 48px;
@@ -132,4 +144,93 @@ dialog footer input {
 
 .d-none {
     display: none;
+}
+
+.close-btn {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+}
+
+.close-btn:hover {
+    background-color: var(--img-border-color);
+}
+
+.close-btn:active {
+    background-color: #0D3240;
+}
+
+.arrow-btn {
+    width: 24px;
+    height: 24px;
+    padding: 18px;
+    background-color: rgba(253, 91, 79, 0.1);
+    border-radius: 50%;
+}
+
+.arrow-btn:hover {
+    background-color: rgba(253, 91, 79, 0.2);
+}
+
+.arrow-left {
+    rotate: 180deg;
+}
+
+.footer-logo {
+    height: 32px;
+    object-fit: cover;
+}
+
+@media screen and (max-width: 480px) {
+    h1 {
+        font-size: 48px;
+    }
+
+    #photo-overlay header {
+        flex-direction: column-reverse;
+        /* align-items: flex-start; */
+    }
+
+    #photo-overlay header>input {
+        align-self: flex-end;
+    }
+
+    #photo-overlay header>h2 {
+        align-self: flex-start;
+    }
+
+    #photo-container {
+        height: 375px;
+    }
+
+    .div-wrapper {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
+    .main-header {
+        height: 72px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .logo {
+        height: 32px;
+        object-fit: cover;
+    }
+
+    .page-content {
+        padding-top: 48px;
+        padding-bottom: 72px;
+        gap: 56px;
+    }
+
+    .dialog-content {
+        padding: 32px 16px 32px 16px;
+    }
+
+    .footer-logo {
+        height: 24px;
+    }
 }
