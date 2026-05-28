@@ -6,6 +6,10 @@ body {
     margin: 0;
 }
 
+body:has(dialog[open]) {
+  overflow: hidden;
+}
+
 main {
     display: flex;
     justify-content: center;
@@ -200,7 +204,7 @@ dialog::backdrop {
     }
 
     #photo-container {
-        height: 375px;
+        height: 300px;
     }
 
     .div-wrapper {
@@ -227,7 +231,7 @@ dialog::backdrop {
     }
 
     .dialog-content {
-        padding: 32px 16px 32px 16px;
+        padding: 16px;
     }
 
     .footer-logo {
