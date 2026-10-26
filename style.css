@@ -7,7 +7,7 @@ body {
 }
 
 body:has(dialog[open]) {
-  overflow: hidden;
+    overflow: hidden;
 }
 
 main {
